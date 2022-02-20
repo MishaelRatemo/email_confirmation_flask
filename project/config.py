@@ -6,13 +6,14 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class BaseConfig(object):
     """Base configuration."""
-    SECRET_KEY = 'my_precious'
+    SECRET_KEY = 'poiuytrewq'
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     WTF_CSRF_ENABLED = True
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECURITY_PASSWORD_SALT = 'qwertyuiop'
 
 
 class DevelopmentConfig(BaseConfig):
