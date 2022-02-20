@@ -11,6 +11,7 @@ from flask import render_template, Blueprint, url_for, \
 from flask_login import login_user, logout_user, \
     login_required, current_user
 from sqlalchemy import false
+from project.email import send_email
 
 from project.models import User
 # from project.email import send_email
@@ -40,11 +41,16 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
+        
         token = generate_confirmation_token(user.email)
+        confirm_url = url_for('user.confirm_email',token=token,_external=True)
+        html = render_template('user/activate_mail.html', confirm_url=confirm_url)
+        subject = 'Please confirm your email'
+        send_email(user.email, subject, html)
         
         login_user(user)
-        flash('You registered and are now logged in. Welcome!', 'success')
-
+        
+        flash('A confirmation email has been sent via email.', 'success')
         return redirect(url_for('main.home'))
 
     return render_template('user/register.html', form=form)
