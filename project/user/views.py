@@ -131,7 +131,7 @@ def unconfirmed():
 def resend_confirmation():
     token = generate_confirmation_token(current_user.email)
     confirm_url = url_for('user.confirm_email', token=token, _external=True)
-    html = render_template('user/activate.html', confirm_url=confirm_url)
+    html = render_template('user/activate_mail.html', confirm_url=confirm_url)
     subject = "Please confirm your email"
     send_email(current_user.email, subject, html)
     flash('A new confirmation email has been sent.', 'success')
