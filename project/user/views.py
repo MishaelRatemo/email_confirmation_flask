@@ -19,6 +19,7 @@ from project import db, bcrypt
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 from ..token import generate_confirmation_token,confirm_token
 
+from ..decorators import check_confirmed
 ################
 #### config ####
 ################
@@ -51,7 +52,8 @@ def register():
         login_user(user)
         
         flash('A confirmation email has been sent via email.', 'success')
-        return redirect(url_for('main.home'))
+        # return redirect(url_for('main.home'))
+        return redirect(url_for("user.unconfirmed"))
 
     return render_template('user/register.html', form=form)
 
@@ -101,6 +103,7 @@ def logout():
 
 @user_blueprint.route('/profile', methods=['GET', 'POST'])
 @login_required
+@check_confirmed
 def profile():
     form = ChangePasswordForm(request.form)
     if form.validate_on_submit():
