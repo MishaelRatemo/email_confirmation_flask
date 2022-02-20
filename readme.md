@@ -35,7 +35,7 @@ $ python manage.py create_admin
 ### Run
 
 ```sh
-$ python manage.py runserver
+$ ./start.sh
 ```
 
 ### Testing
@@ -51,3 +51,5 @@ With coverage:
 ```sh
 $ python manage.py cov
 ```
+## Known bugs
++  not all tests successfully pass
