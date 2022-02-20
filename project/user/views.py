@@ -114,3 +114,11 @@ def profile():
             flash('Password change was unsuccessful.', 'danger')
             return redirect(url_for('user.profile'))
     return render_template('user/profile.html', form=form)
+
+@user_blueprint.route('/unconfirmed')
+@login_required
+def unconfirmed():
+    if current_user.confirmed:
+        return redirect('main.home')
+    flash('Please confirm your account!', 'warning')
+    return render_template('user/unconfirmed.html')
