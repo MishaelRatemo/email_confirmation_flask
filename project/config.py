@@ -14,7 +14,19 @@ class BaseConfig(object):
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECURITY_PASSWORD_SALT = 'qwertyuiop'
-
+    
+    # Mial settings
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    # MAIL_USE_SSL = True
+    
+    # GMAIL AUTHENTICATION
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    
+    # mail account
+    MAIL_DEFAULT_SENDER = 'pitchershub@gmail.com'
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""
