@@ -1,4 +1,4 @@
-# Flask User Management
+# Flask User Management- Email confirmation(token)
 
 [![Build Status](https://travis-ci.org/mjhea0/flask-basic-registration.svg?branch=master)](https://travis-ci.org/mjhea0/flask-basic-registration)
 
